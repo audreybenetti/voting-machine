@@ -2,11 +2,11 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ElectoralSystemImpl implements ElectoralSystem {
+public class VotingSystemImpl implements VotingSystem {
 
     private final CandidateRepository repository;
 
-    public ElectoralSystemImpl() {
+    public VotingSystemImpl() {
         repository = new CandidateRepository();
     }
 

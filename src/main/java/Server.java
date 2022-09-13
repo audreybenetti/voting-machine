@@ -7,8 +7,8 @@ public class Server extends Thread {
 
     public static void main(String[] args) {
         try {
-            ElectoralSystem server = new ElectoralSystemImpl();
-            ElectoralSystem skeleton = (ElectoralSystem) UnicastRemoteObject.exportObject(server, 0);
+            VotingSystem server = new VotingSystemImpl();
+            VotingSystem skeleton = (VotingSystem) UnicastRemoteObject.exportObject(server, 0);
             Registry record = LocateRegistry.getRegistry();
             record.rebind("voting-machine", skeleton);
 
@@ -24,7 +24,7 @@ public class Server extends Thread {
         }
     }
 
-    private static void printsVotesPeriodically(ElectoralSystem skeleton, Server thread)
+    private static void printsVotesPeriodically(VotingSystem skeleton, Server thread)
             throws InterruptedException, RemoteException {
         do {
             sleep(5000);

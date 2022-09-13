@@ -7,15 +7,16 @@ public class Client {
     public static void main(String[] args) {
         try {
             Registry record = LocateRegistry.getRegistry();
-            ElectoralSystem stub = (ElectoralSystem) record.lookup("voting-machine");
+            VotingSystem stub = (VotingSystem) record.lookup("voting-machine");
             getVote(stub);
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private static void getVote(ElectoralSystem stub) {
+    private static void getVote(VotingSystem stub) {
         Scanner input = new Scanner(System.in);
+        while (true){
         System.out.println("Digite o número do seu candidato: ");
         int vote = input.nextInt();
         try {
@@ -24,5 +25,6 @@ public class Client {
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
+      }
     }
 }
