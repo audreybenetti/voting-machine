@@ -11,7 +11,7 @@ public class ValidationImpl implements Validation{
     }
 
     @Override
-    public synchronized void receiveVote(int vote) throws RemoteException {
+    public synchronized void receiveVote(int vote) throws Exception {
         var candidate = repository.getCandidate(vote);
         candidate.setVotesReceived(candidate.getVotesReceived() + 1);
     }

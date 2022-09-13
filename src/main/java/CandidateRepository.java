@@ -26,10 +26,10 @@ public class CandidateRepository {
         return candidateList;
     }
 
-    public Candidate getCandidate(int number) {
+    public Candidate getCandidate(int number) throws Exception {
         return candidateList.stream()
                 .filter(candidate -> candidate.getNumber() == number)
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new Exception("Candidato não encontrado."));
     }
 }

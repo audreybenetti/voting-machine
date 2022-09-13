@@ -1,7 +1,5 @@
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Client {
@@ -16,10 +14,15 @@ public class Client {
         }
     }
 
-    private static void getVote(Validation stub) throws RemoteException {
+    private static void getVote(Validation stub) {
         Scanner input = new Scanner(System.in);
         System.out.println("Digite o número do seu candidato: ");
         int vote = input.nextInt();
-        stub.receiveVote(vote);
+        try {
+            stub.receiveVote(vote);
+            System.out.println("Voto computado!");
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 }
