@@ -11,14 +11,14 @@ public class ValidationImpl implements Validation{
     }
 
     @Override
-    public synchronized void receiveVote(String name, int number) throws RemoteException {
-        var candidate = repository.getCandidate(number);
+    public synchronized void receiveVote(int vote) throws RemoteException {
+        var candidate = repository.getCandidate(vote);
         candidate.setVotesReceived(candidate.getVotesReceived() + 1);
     }
 
     @Override
     public void countVote() throws RemoteException{
-        System.out.printf("\n--------------------------- %s ---------------------------", getDate());
+        System.out.printf("\n\n----------------- %s -----------------", getDate());
         repository.getCandidateList()
                 .forEach(candidate ->
                         System.out.printf("\n%s com total de %d votos.",

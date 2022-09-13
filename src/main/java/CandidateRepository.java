@@ -1,15 +1,12 @@
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 public class CandidateRepository {
 
     private final List<Candidate> candidateList = new ArrayList<>();
-
-    public List<Candidate> getCandidateList() {
-        return candidateList;
-    }
 
     public CandidateRepository(){
         initialize();
@@ -25,14 +22,14 @@ public class CandidateRepository {
         candidateList.add(c3);
     }
 
+    public List<Candidate> getCandidateList() {
+        return candidateList;
+    }
+
     public Candidate getCandidate(int number) {
         return candidateList.stream()
                 .filter(candidate -> candidate.getNumber() == number)
                 .findFirst()
                 .orElseThrow();
-    }
-
-    public boolean candidateExists(int number) {
-        return candidateList.contains(getCandidate(number));
     }
 }

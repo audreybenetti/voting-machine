@@ -26,4 +26,13 @@ public class Candidate implements Serializable {
     public void setVotesReceived(int votesReceived) {
         this.votesReceived = votesReceived;
     }
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "name='" + name + '\'' +
+                ", number=" + number +
+                ", votesReceived=" + votesReceived +
+                '}';
+    }
 }
