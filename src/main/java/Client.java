@@ -9,14 +9,11 @@ public class Client {
             Registry record = LocateRegistry.getRegistry();
             Validation stub = (Validation) record.lookup("voting-machine");
 
-
             Scanner input = new Scanner(System.in);
 
             System.out.println("Digite o número do seu candidato: ");
             int vote = input.nextInt();
             stub.receiveVote("name", vote);
-
-
 
         } catch (Exception e){
             e.printStackTrace();
